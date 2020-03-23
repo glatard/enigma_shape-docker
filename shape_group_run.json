@@ -2,6 +2,7 @@
     "name": "shape_group_run",
     "description": "This tool takes FreeSurfer aseg.mgz files and generates homologous mesh representations of subcortical ROI boundaries and vertex-wise shape features for statistical analysis. Please cite the following work when using this tool: 1. Gutman, B.A., Madsen, S.K., Toga, A.W., Thompson, P.M.: A Family of Fast Spherical Registration Algorithms for Cortical Shapes. In: Multimodal Brain Image Analysis, vol. 8159, pp. 246-257. Springer International Publishing (2013) 2. Gutman, B.A., Wang, Y., Rajagopalan, P., Toga, A.W., Thompson, P.M.: Shape matching with medial curves and 1-D group-wise registration. In: Biomedical Imaging (ISBI), 2012 9th IEEE International Symposium on, pp. 716-719. (2012)",
     "tool-version": "unknown",
+    "descriptor-url": "https://raw.githubusercontent.com/glatard/enigma_shape-docker/master/shape_group_run.json",
     "schema-version": "0.5",
     "command-line": "chmod 700 [FREESURFER_OUTPUT_DIR]/*/mri && mv [FREESURFER_OUTPUT_DIR] /usr/local/freesurfer && shape_group_run.sh [CSV_FILE] [FREESURFER_OUTPUT_DIR] [OUTPUT_DIR]",
     "container-image": {
