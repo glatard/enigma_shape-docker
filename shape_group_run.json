@@ -4,7 +4,7 @@
     "tool-version": "unknown",
     "descriptor-url": "https://raw.githubusercontent.com/glatard/enigma_shape-docker/master/shape_group_run.json",
     "schema-version": "0.5",
-    "command-line": "chmod 700 [FREESURFER_SUBJECT_DIR]/mri && cp [FS_LICENSE] /usr/local/freesurfer && echo $(basename [FREESURFER_SUBJECT_DIR]) > ids.csv && shape_group_run.sh ids.csv $(dirname [FREESURFER_SUBJECT_DIR]) [OUTPUT_DIR]",
+    "command-line": "chmod 700 [FREESURFER_SUBJECT_DIR]/mri && cp [FS_LICENSE] /usr/local/freesurfer && echo $(basename [FREESURFER_SUBJECT_DIR]) > ids.csv && shape_group_run.sh ids.csv $(dirname [FREESURFER_SUBJECT_DIR]) shape-results",
     "container-image": {
         "image": "glatard/enigma_shape:latest",
         "type": "docker"
@@ -23,20 +23,13 @@
             "description": "A valid Freesurfer license file.",
             "type": "File",
             "value-key": "[FS_LICENSE]"
-        },
-        {
-            "id": "output_dir_name",
-            "name": "Output directory name",
-            "description": "Name of the output directory where results will be stored.",
-            "type": "String",
-            "value-key": "[OUTPUT_DIR]"
         }
     ],
     "output-files": [
         {
             "id": "outputs",
             "name": "Output directory",
-            "path-template": "[OUTPUT_DIR]"
+            "path-template": "shape-results"
         }
     ],
     "tags": {
