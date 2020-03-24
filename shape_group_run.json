@@ -4,26 +4,25 @@
     "tool-version": "unknown",
     "descriptor-url": "https://raw.githubusercontent.com/glatard/enigma_shape-docker/master/shape_group_run.json",
     "schema-version": "0.5",
-    "command-line": "chmod 700 [FREESURFER_OUTPUT_DIR]/*/mri && mv [FREESURFER_OUTPUT_DIR] /usr/local/freesurfer && shape_group_run.sh [CSV_FILE] [FREESURFER_OUTPUT_DIR] [OUTPUT_DIR]",
+    "command-line": "chmod 700 [FREESURFER_SUBJECT_DIR]/mri && cp [FS_LICENSE] /usr/local/freesurfer && echo $(basename [FREESURFER_SUBJECT_DIR]) > ids.csv && shape_group_run.sh ids.csv $(dirname [FREESURFER_SUBJECT_DIR]) [OUTPUT_DIR]",
     "container-image": {
         "image": "glatard/enigma_shape:latest",
-        "index": "docker://",
-        "type": "singularity"
+        "type": "docker"
     },
     "inputs": [
         {
-            "id": "csv_file",
-            "name": "Subject ids (csv)",
-            "description": "A comma-separated file with subject id's in the first column, exactly as they appear in the FreeSurfer output paths. The csv file MUST BE SAVED IN PC or UNIX format. (due to a quirk, at least 2 additional columns are needed). It is assumed that if the .csv file has headers, the subject Id header is exactly either 'id' or 'SubjID'.",
+            "id": "freesurfer_subject_dir",
+            "name": "Freesurfer subject output directory",
+            "description": "A Freesurfer subject output directory, usually named after a subject id (e.g., '12345').",
             "type": "File",
-            "value-key": "[CSV_FILE]"
+            "value-key": "[FREESURFER_SUBJECT_DIR]"
         },
         {
-            "id": "freesurfer_output_dir",
-            "name": "Freesurfer ouput directory",
-            "description": "The Freesurfer output directory, containing a sub-directory for each subject id mentioned in the CSV file. For instance, if the CSV file contains id '12345', then this directory must contain a sub-directory named '12345'.",
+            "id": "freesurfer_license",
+            "name": "Freesurfer license file",
+            "description": "A valid Freesurfer license file.",
             "type": "File",
-            "value-key": "[FREESURFER_OUTPUT_DIR]"
+            "value-key": "[FS_LICENSE]"
         },
         {
             "id": "output_dir_name",
