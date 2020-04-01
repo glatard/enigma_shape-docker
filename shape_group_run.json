@@ -40,5 +40,8 @@
         "genetics": true,
         "ENIGMA": true
     },
-    "doi": "10.5281/zenodo.3731350"
+    "doi": "10.5281/zenodo.3736811",
+    "suggested-resources": {
+        "walltime-estimate": 3600
+    } 
 }
