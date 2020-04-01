@@ -10,6 +10,9 @@
         "image": "glatard/enigma_shape:latest",
         "type": "docker"
     },
+    "online-platform-urls": [
+        "https://portal.cbrain.mcgill.ca"
+    ],
     "inputs": [
         {
             "id": "freesurfer_subject_dir",
@@ -36,5 +39,6 @@
     "tags": {
         "genetics": true,
         "ENIGMA": true
-    }
+    },
+    "doi": "10.5281/zenodo.3731350"
 }
