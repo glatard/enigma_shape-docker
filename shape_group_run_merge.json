@@ -5,7 +5,7 @@
     "tool-version": "unknown",
     "descriptor-url": "https://raw.githubusercontent.com/glatard/enigma_shape-docker/master/shape_group_run_merge.json",
     "schema-version": "0.5",
-    "command-line": "merge.sh [SHAPE_RESULT_DIRS] && mkdir shapes && mv ... shapes-merged",
+    "command-line": "merge.sh [SHAPE_RESULT_DIRS] && mkdir -p shapes-merged && mv *.Rdata shapes-merged",
     "container-image": {
         "image": "glatard/enigma_shape_merge:latest",
         "type": "docker"
