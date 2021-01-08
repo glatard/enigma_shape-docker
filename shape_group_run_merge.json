@@ -1,0 +1,40 @@
+{
+    "name": "shape_group_run_merge",
+    "author": "ENIGMA",
+    "description": "Merge results produced by shape_group_run.",
+    "tool-version": "unknown",
+    "descriptor-url": "https://raw.githubusercontent.com/glatard/enigma_shape-docker/master/shape_group_run_merge.json",
+    "schema-version": "0.5",
+    "command-line": "merge.sh [SHAPE_RESULT_DIRS] && mkdir shapes && mv ... shapes-merged",
+    "container-image": {
+        "image": "glatard/enigma_shape_merge:latest",
+        "type": "docker"
+    },
+    "online-platform-urls": [
+        "https://portal.cbrain.mcgill.ca"
+    ],
+    "inputs": [
+        {
+            "id": "shape_results_dir",
+            "name": "Shape result directories",
+            "description": "Shape result directories produced by shape_group_run",
+            "list": true,
+            "type": "File",
+            "value-key": "[SHAPE_RESULT_DIRS]"
+        }
+    ],
+    "output-files": [
+        {
+            "id": "outputs",
+            "name": "Output directory",
+            "path-template": "shapes-merged"
+        }
+    ],
+    "tags": {
+        "genetics": true,
+        "ENIGMA": true
+    },
+    "suggested-resources": {
+        "walltime-estimate": 3600
+    }
+}

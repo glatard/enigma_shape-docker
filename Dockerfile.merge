@@ -1,0 +1,3 @@
+FROM alpine:3.12.3
+RUN apk update  && apk add R gawk
+ADD merge.sh bin
