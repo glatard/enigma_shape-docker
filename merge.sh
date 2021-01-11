@@ -1,10 +1,15 @@
 #!/usr/bin/env sh
 
-###
-# Usage: merge.sh <dir1> <dir2> <dir3> ...
-###
-
 set -e
+
+if [[ $# -ne 1 ]]
+then
+    echo 'usage: merge.sh <results_dir>'
+    exit 1
+fi
+
+input_dir=$1
+test -d "${input_dir}" || (echo "${input_dir} not found"; exit 1)
 
 study="study"
 
@@ -17,7 +22,7 @@ do
     do
         out="${prefix}.${m}.${b}.txt"
         \rm -f $out
-        for s in "$@"
+        for s in "${input_dir}"/*
         do
             od -f "${s}"/*/${m}_${b}.raw | gawk 'BEGIN{a="'$s'"}{for(i=2;i<NF+1;i++)a=a" "$i}END{print a}' >> $out
         done
