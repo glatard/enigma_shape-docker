@@ -57,5 +57,5 @@ EOF
 Rscript merge.R
 
 echo cleanup
-\rm -f ${prefix}* 
+#\rm -f ${prefix}*
 \rm -f merge.R
