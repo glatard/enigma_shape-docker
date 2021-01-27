@@ -5,7 +5,7 @@
     "tool-version": "unknown",
     "descriptor-url": "https://raw.githubusercontent.com/glatard/enigma_shape-docker/master/shape_group_run.json",
     "schema-version": "0.5",
-    "command-line": "chmod 700 [FREESURFER_SUBJECT_DIR]/mri && echo $(basename [FREESURFER_SUBJECT_DIR]) > ids.csv && shape_group_run.sh ids.csv $(dirname [FREESURFER_SUBJECT_DIR]) shape-results",
+    "command-line": "chmod 700 [FREESURFER_SUBJECT_DIR]/mri && echo $(basename [FREESURFER_SUBJECT_DIR]) > ids.csv && shape_group_run.sh ids.csv $(dirname [FREESURFER_SUBJECT_DIR]) shape-results-[FREESURFER_SUBJECT_DIR]",
     "container-image": {
         "image": "glatard/enigma_shape:latest",
         "type": "docker"
@@ -26,7 +26,7 @@
         {
             "id": "outputs",
             "name": "Output directory",
-            "path-template": "shape-results"
+            "path-template": "shape-results-[FREESURFER_SUBJECT_DIR]"
         }
     ],
     "tags": {
