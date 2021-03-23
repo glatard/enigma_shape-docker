@@ -35,6 +35,6 @@
         "ENIGMA": true
     },
     "suggested-resources": {
-        "walltime-estimate": 3600
+        "walltime-estimate": 7200
     }
 }
