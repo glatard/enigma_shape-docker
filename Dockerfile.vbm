@@ -1,0 +1,20 @@
+FROM brainlife/freesurfer-with-atlases
+RUN apt update -y && apt install -y git wget unzip
+
+# Install FSfslVBM
+RUN (cd /opt && \
+    git clone https://github.com/roshchupkin/FSfslVBM.git && \
+      (cd FSfslVBM && \
+       wget https://www.dropbox.com/sh/q6lfaft0xx50zq7/AADjW99S8kHWQaJzOxNfkxE0a?dl=0 -O vbm.zip &&\
+        unzip vbm.zip -x / && \rm vbm.zip))
+
+ENV PATH=$PATH:/opt/FSfslVBM 
+
+# Install FSL
+ADD ./myFslInstallerScript.sh /bin 
+RUN /bin/myFslInstallerScript.sh
+ENV FSLDIR=/usr/local/src/fsl
+
+# Install Python 2.7 deps
+RUN wget https://bootstrap.pypa.io/pip/2.7/get-pip.py && python get-pip.py &&\
+    pip install nipy
