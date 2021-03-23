@@ -6,7 +6,7 @@
     "url": "https://github.com/roshchupkin/FSfslVBM",
     "descriptor-url": "https://raw.githubusercontent.com/glatard/enigma_shape-docker/master/FSfslVBM.json",
     "schema-version": "0.5",
-    "command-line": "chmod 700 [FREESURFER_SUBJECT_DIR]/mri && bash /opt/FSfslVBM/fsl_vbm_pipeline.sh -i [FREESURFER_SUBJECT_DIR]/mri/aseg.mgz -f /usr/local/freesurfer/ -v /opt/FSfslVBM -o vbm-results-[FREESURFER_SUBJECT_DIR] -n [FREESURFER_SUBJECT_DIR] -t /opt/FSfslVBM/brain_vbm_atlas.nii.gz -c /opt/FSfslVBM/GM_2_MNI152GM_1mm.cnf",
+    "command-line": "chmod 700 [FREESURFER_SUBJECT_DIR]/mri && mkdir -p vbm-results-$(basename [FREESURFER_SUBJECT_DIR]) && bash /opt/FSfslVBM/fsl_vbm_pipeline.sh -i [FREESURFER_SUBJECT_DIR]/mri/aseg.mgz -f /usr/local/freesurfer/ -v /opt/FSfslVBM -o vbm-results-$(basename [FREESURFER_SUBJECT_DIR]) -n $(basename [FREESURFER_SUBJECT_DIR]) -t /opt/FSfslVBM/brain_vbm_atlas.nii.gz -c /opt/FSfslVBM/GM_2_MNI152GM_1mm.cnf",
     "container-image": {
         "image": "glatard/fsfslvbm:latest",
         "type": "docker"
